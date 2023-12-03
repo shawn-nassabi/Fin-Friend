@@ -1,13 +1,224 @@
 <!doctype html>
 <html lang="en-us">
   <head>
-    <title></title>
+    <title>User Information</title>
         <!-- your custom sketch code -->
-        <script src="sketch.js"></script>
     
         <!-- custom CSS styles for this page -->
+        <style>
+
+          @font-face {
+            font-family: oregonFont;
+            src: url(OregonLdoBook-4BYD.ttf);
+          }
+
+          @font-face {
+            font-family: casanova;
+            src: url(CasanovaRegular-gx0J4.otf);
+          }
+
+          #main {
+            position: fixed;
+            top: 0px;
+            left: 25%;
+            height: 100%;
+          }
+
+          #nav {
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            width: 25%;
+            height: 100%;
+            background-color: #b9d796;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          }
+
+          .navA {
+            margin-bottom: 10px;
+            margin-top: 15px;
+            text-decoration: none;
+            font-family: oregonFont;
+            font-size: 170%;
+            color: black;
+          }
+
+          #icon {
+            position: fixed;
+            top: -10px;
+            right: 0px;
+          }
+
+          a:hover {
+            background-color: #f689bb;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            opacity: 75%;
+          }
+
+          #here {
+            background-color: #f689bb;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          }
+
+          #inputBox {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 50%;
+            height: auto;
+            background-color: #eaeaea;
+            padding: 10px;
+            border:#eaeaea 5px solid;
+            border-radius: 15px;
+            margin: auto;
+            font-family: casanova;
+            font-size: 35px;
+            margin-top: 10px;
+          }
+
+          #inputBox:hover {
+            opacity: 75%;
+          }
+
+          #inputInside {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+          }
+
+          p {
+            margin: 5px;
+          }
+
+          button {
+            border: solid 3px #f689bb;
+            background-color: #f689bb;
+            border-radius: 15px;
+            font-family: oregonFont;
+            width: 30%;
+            height: 25%;
+          }
+
+          #part2 {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            margin: auto;
+          }
+
+          #budgetTable {
+            margin: auto;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+          }
+
+          #addButtonImage {
+            width: 100%;
+          }
+          table {
+            margin: auto;
+            border-collapse: collapse;
+            background: #fcdceb;
+            width: 75%;
+            text-align: center;
+            padding: 10px;
+            border: 5px solid white;
+            border-radius: 30px;
+          }
+
+          caption, th, td {
+            padding: 20px;
+            font-family: casanova;
+          }
+
+          caption {
+            text-align: center;
+            font-family: oregonFont;
+            font-size: 20px;
+          }
+        </style>
   </head>
   <body>
-    <h1></h1>
+
+      <div id="nav">
+          <a class="navA" href="intro.html">+ Home Page</a>
+          <a class="navA" href="fin.html">+ Fin Friend</a>
+          <a id="here" class="navA" href="index.html">+ My Info</a>
+      </div>
+
+      <div id="main">
+        <img id="icon" src="fin_friend/assets/icon.png" width="100" height="100">
+        <div id="part1">
+            <div id="pieChart"></div>
+      
+        <div id="inputBox">
+          <label>Please enter your budget:</label>
+          <div id="inputInside">
+            <p>$</p><input type="number" name="budgetNum" placeholder="0.00">
+          </div>
+            <button><b>Save Budget</b></button>
+        </div>
+
+        <div id="part2">
+          <div id="budgetTable">
+            <table id="table">
+              <caption>My Budget Plan</caption>
+              <tr>
+                <th>Category</th>
+                <th>Budget</th>
+                <th>Amount Spent</th>
+                <th>Remaining Balance</th>
+                <th>Submit</th>
+              </tr>
+              <tr>
+                <td><input id="c" type="text" name="category" placeholder="Category"></td>
+                <td><input id="b" type="number" name="budget" placeholder="Budget"></td>
+                <td><input id="a" type="number" name="spent" placeholder="Amount Spent"></td>
+                <td><input id="r" type="number" name="balance" placeholder="Remaining Balance"></td>
+                <td><img id="addButtonImage" src="buttonLogo.png"></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
+      </div>
+
+      <script>
+        let add = document.getElementById("addButtonImage");
+        let table = document.getElementById("table");
+        add.addEventListener("click", function() {
+          console.log("hi");
+          let category = document.getElementById("c").value;
+          let budget = document.getElementById("b").value;
+          let amount = document.getElementById("a").value;
+          let balance = document.getElementById("r").value;
+          let newtr = document.createElement("tr");
+          let td1 = document.createElement("td");
+          td1.textContent = category;
+          let td2 = document.createElement("td");
+          td2.textContent = budget;
+          let td3 = document.createElement("td");
+          td3.textContent = amount;
+          let td4 = document.createElement("td");
+          td4.textContent = balance;
+          newtr.appendChild(td1);
+          newtr.appendChild(td2);
+          newtr.appendChild(td3);
+          newtr.appendChild(td4);
+          table.appendChild(newtr);
+        });
+
+      </script>
   </body>
 </html>
