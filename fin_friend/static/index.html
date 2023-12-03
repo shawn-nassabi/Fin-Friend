@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>User Information</title>
+        <!-- your custom sketch code -->
+    
+        <!-- custom CSS styles for this page -->
+        <style>
+          body {
+            background-color: #FDFCF5;
+            scroll-behavior: smooth;
+          }
+
+          @font-face {
+            font-family: oregonFont;
+            src: url(OregonLdoBook-4BYD.ttf);
+          }
+
+          @font-face {
+            font-family: casanova;
+            src: url(CasanovaRegular-gx0J4.otf);
+          }
+
+          #main {
+            position: fixed;
+            top: 0px;
+            left: 25%;
+            height: 100%;
+            overflow-y: auto;
+          }
+
+          #nav {
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            width: 25%;
+            height: 100%;
+            background-color: #b9d796;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          }
+
+          .navA {
+            margin-bottom: 10px;
+            margin-top: 15px;
+            text-decoration: none;
+            font-family: oregonFont;
+            font-size: 170%;
+            color: black;
+          }
+
+          #icon {
+            position: fixed;
+            top: -10px;
+            right: 0px;
+          }
+
+          a:hover {
+            background-color: #f689bb;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            opacity: 75%;
+          }
+
+          #here {
+            background-color: #f689bb;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          }
+
+          #inputBox {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 50%;
+            height: auto;
+            background-color: #eaeaea;
+            padding: 10px;
+            border:#eaeaea 5px solid;
+            border-radius: 15px;
+            margin: auto;
+            font-family: casanova;
+            font-size: 35px;
+            margin-top: 10px;
+          }
+
+          #inputBox:hover {
+            opacity: 75%;
+          }
+
+          #inputInside {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+          }
+
+          p {
+            margin: 5px;
+          }
+
+          button {
+            border: solid 3px #f689bb;
+            background-color: #f689bb;
+            border-radius: 15px;
+            font-family: oregonFont;
+            width: 30%;
+            height: 25%;
+          }
+
+          #part2 {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            margin: auto;
+          }
+
+          #budgetTable {
+            margin: auto;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+          }
+
+          #addButtonImage {
+            width: 100%;
+          }
+          table {
+            margin: auto;
+            border-collapse: collapse;
+            background: #fcdceb;
+            width: 75%;
+            text-align: center;
+            padding: 10px;
+            border: 5px solid #FDFCF5;
+            border-radius: 30px;
+          }
+
+          caption, th, td {
+            padding: 20px;
+            font-family: casanova;
+          }
+
+          caption {
+            text-align: center;
+            font-family: oregonFont;
+            font-size: 20px;
+          }
+
+          td > input {
+            border: 5px solid white;
+            border-radius: 15px;
+          }
+
+          td > input:hover {
+            background-color: #eaeaea;
+          }
+
+          #delImage {
+            width: 100%;
+          }
+
+          #save:active {
+            opacity: 100%;
+            background-color: #b9d796;
+            border-color: #b9d796;
+            font-size: 20px;
+          }
+
+          #graph {
+            width: 100%;
+            height: auto;
+            background-image: linear-gradient(#f689bb,#FDFCF5);
+            border-radius: 15px;
+            font-size: 30px;
+            color: white;
+            text-align: center;
+            font-family: oregonFont;
+          }
+
+          #part3 {
+            margin: auto;
+            margin-top: 15px;
+            display: flex;
+            width: 45%;
+            padding: 20px;
+            height: 200px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: #eaeaea;
+            border: 10px solid #eaeaea;
+            border-radius: 15px;
+          }
+
+          #budgetShow {
+            font-size: 30px;
+            font-family: oregonFont;
+            text-transform: uppercase;
+          }
+
+          #budgetAmt {
+            font-size: 40px;
+          }
+        </style>
+  </head>
+  <body>
+
+      <div id="nav">
+          <a class="navA" href="intro.html">+ Home Page</a>
+          <a class="navA" href="fin.html">+ Fin Friend</a>
+          <a id="here" class="navA" href="index.html">+ My Info</a>
+      </div>
+
+      <div id="main">
+        <img id="icon" src="../static/icon.png" width="100" height="100">
+        <div id="part1">
+            <div id="pieChart"></div>
+      
+        <div id="inputBox">
+          <label>Please enter your budget:</label>
+          <div id="inputInside">
+            <p>$</p><input id="budgetNum" type="number" name="budgetNum" placeholder="0.00">
+          </div>
+            <button id="save"><b>Save Budget</b></button>
+        </div>
+
+        <div id="part2">
+          <div id="budgetTable">
+            <table id="table">
+              <caption>My Budget Plan</caption>
+              <tr>
+                <th>Category</th>
+                <th>Budget</th>
+                <th>Amount Spent</th>
+                <th>Remaining Balance</th>
+                <th>Submit</th>
+              </tr>
+              <tr>
+                <td><input id="c" type="text" name="category" placeholder="Category"></td>
+                <td><input id="b" type="number" name="budget" placeholder="Budget"></td>
+                <td><input id="a" type="number" name="spent" placeholder="Amount Spent"></td>
+                <td><p id="r"></p></td>
+                <td><img id="addButtonImage" src="../static/buttonLogo.png"></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div id="part3">
+          <p id="budgetShow">Budget Amount:</p>
+          <p id="budgetAmt">$0.00</p>
+          <div id="graph">
+            <p>100%</p>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        // code for budget
+        let save = document.getElementById("save");
+        let displayBudget = document.getElementById("budgetAmt");
+        let graph = document.getElementById("graph");
+        let budgetAmount;
+        let saved = false;
+        budgetAmount = document.getElementById("budgetNum").value;
+        save.addEventListener("click", function() {
+          budgetAmount = document.getElementById("budgetNum").value;
+          displayBudget.textContent = "$" + parseFloat(budgetAmount);
+          saved = true;
+        });
+
+        // code for buttons
+        let delArray = [];
+        let add = document.getElementById("addButtonImage");
+        let table = document.getElementById("table");
+        add.addEventListener("click", function() {
+          if (saved == true) {
+            let category = document.getElementById("c").value;
+            let budget = document.getElementById("b").value;
+            let amount = document.getElementById("a").value;
+            let balance = budgetAmount - amount;
+            let newtr = document.createElement("tr");
+            let td1 = document.createElement("td");
+            td1.textContent = category;
+            let td2 = document.createElement("td");
+            td2.textContent = budget;
+            let td3 = document.createElement("td");
+            td3.textContent = amount;
+            let td4 = document.createElement("td");
+            td4.textContent = "$" + balance;
+            let del = document.createElement("img");
+            del.src = "../static/delete.png";
+            del.setAttribute("id", "delImage");
+            delArray.push(del);
+            let td5 = document.createElement("td");
+            td5.appendChild(del);
+            newtr.appendChild(td1);
+            newtr.appendChild(td2);
+            newtr.appendChild(td3);
+            newtr.appendChild(td4);
+            newtr.appendChild(td5);
+            table.appendChild(newtr);
+            let percent = parseInt(balance/budgetAmount * 100);
+            document.getElementById("c").value = "";
+            document.getElementById("b").value = "";
+            document.getElementById("a").value = "";
+            document.getElementById("r").value = "";
+            budgetAmount = balance;
+            displayBudget.textContent = "$" + budgetAmount;
+            graph.textContent = percent + "%";
+            graph.style.width = percent + "%";
+            for (let i = 0; i < delArray.length; i++) {
+              delArray[i].onclick = function(event) {
+                let child = event.currentTarget;
+                let parent = child.parentNode;
+                let grandparent = parent.parentNode;
+                table.removeChild(grandparent);
+              };
+            }
+          }
+        });
+
+      </script>
+  </body>
+</html>
